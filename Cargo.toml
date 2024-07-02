@@ -1,43 +1,90 @@
 [package]
+edition = "2021"
 name = "coinlive"
-description = "Interactive command line tool that displays live cryptocurrency prices and simple historical price charts."
-version = "0.2.3"
+version = "0.2.4"
 authors = ["Markus Mayer <mmayer@mayeranalytics.com>"]
-readme = "README.md"
+description = "Interactive command line tool that displays live cryptocurrency prices and simple historical price charts."
 homepage = "https://github.com/mayeranalytics/coinlive"
-repository = "https://github.com/mayeranalytics/coinlive"
 documentation = "https://github.com/mayeranalytics/coinlive"
-keywords = ["cryptocurrency", "crypto", "charts"]
+readme = "README.md"
+keywords = [
+    "cryptocurrency",
+    "crypto",
+    "charts",
+]
 categories = ["command-line-utilities"]
 license = "GPL-3.0-or-later"
-edition = "2018"
+repository = "https://github.com/mayeranalytics/coinlive"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+debug = 0
 
 [[bin]]
 name = "coinlive"
 
-[profile.release]
-debug = 0
-lto = true
-opt-level = 3
-codegen-units = 1
+[dependencies.async-stream]
+version = "0.3.5"
 
-[dependencies]
-url = "2"
-futures = "0.3.*"
-tokio = {version = "1", features=["full"]}
-tokio-stream = "0.1"
-async-stream = "0.3"
-tungstenite = {version="0.18"}
-tokio-tungstenite  = {version="0.18", features=["native-tls"]}
-tokio-stdin-stdout = "0.1"
-futures-util = "~0.3"
-http_req  = {version="0.9", default-features = false, features = ["rust-tls"]}
-tui = { version = "0.19", default-features = false, features = ["termion"] }
-termion = "2"
-chrono = "0.4"
-dec = "0.4.4"
-inlinable_string = "0.1"
-clap = "4.1"
-serde = {version="1.0", features = ["derive"]}
-serde_json = {version="1.0"}
-version = "3.0"
+[dependencies.chrono]
+version = "0.4.38"
+
+[dependencies.clap]
+version = "4.5.8"
+
+[dependencies.dec]
+version = "0.4.9"
+
+[dependencies.futures]
+version = "0.3.3"
+
+[dependencies.futures-util]
+version = "0.3.3"
+
+[dependencies.http_req]
+version = "0.11.0"
+features = ["rust-tls"]
+default-features = false
+
+[dependencies.inlinable_string]
+version = "0.1.15"
+
+[dependencies.serde]
+version = "1.0.203"
+features = ["derive"]
+
+[dependencies.serde_json]
+version = "1.0.120"
+
+[dependencies.termion]
+version = "4.0.2"
+
+[dependencies.tokio]
+version = "1.38.0"
+features = ["full"]
+
+[dependencies.tokio-stdin-stdout]
+version = "0.1.5"
+
+[dependencies.tokio-stream]
+version = "0.1.15"
+
+[dependencies.tokio-tungstenite]
+version = "0.23.1"
+features = ["native-tls"]
+
+[dependencies.tui]
+version = "0.19.0"
+features = ["termion"]
+default-features = false
+
+[dependencies.tungstenite]
+version = "0.23.0"
+
+[dependencies.url]
+version = "2.5.2"
+
+[dependencies.version]
+version = "3.0.0"
